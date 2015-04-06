@@ -18,6 +18,9 @@ BLOCKY_DIR = $(PWD)
 
 all: deps languages
 
+pacelab-en:
+	$(SOY_COMPILER) --outputPathFormat appengine/pacelab/generated/en/soy.js --srcs appengine/pacelab/template.soy
+	python build-app.py pacelab en
 index-en:
 	mkdir -p appengine/generated/en/
 	$(SOY_COMPILER) --outputPathFormat appengine/index/generated/en/soy.js --srcs appengine/index/template.soy

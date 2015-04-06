@@ -8,7 +8,7 @@
  */
 'use strict';
 
-goog.provide('Pinball.Blocks');
+goog.provide('pacelab.Blocks');
 
 goog.require('Blockly');
 goog.require('BlocklyGames');
@@ -425,5 +425,25 @@ Blockly.JavaScript['setupdisplay'] = function(block) {
   var dropdown_intensity = block.getFieldValue('intensity');
   // TODO: Assemble JavaScript into code variable.
   var code = '';
+  return code;
+};
+Blockly.Blocks['wait'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setColour(20);
+    this.appendValueInput("time")
+        .appendField("Wait");
+    this.appendDummyInput()
+        .appendField("Seconds");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+  }
+};
+Blockly.JavaScript['wait'] = function(block) {
+  var value_time = Blockly.JavaScript.valueToCode(block, 'time', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
   return code;
 };
