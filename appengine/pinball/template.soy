@@ -38,6 +38,7 @@
         </h1>
       </td>
       <td class="farSide">
+        <button type="button" onclick="showCode()">Generate Code</button>
         <select id="languageMenu"></select>
         &nbsp;
         
@@ -94,6 +95,16 @@
     <block type="setdisplaytodecnumber"></block>
     <block type="setdisplaytohexnumber"></block>
     <block type="setupdisplay"></block>
+    </category>
+    <category name="Control">
+    <block type="forever"></block>
+    <block type="repeat">
+      <value name="times">
+        <block type="math_number">
+          <field name="NUM">10</field>
+        </block>
+      </value>
+    </block>
     </category>
   </category>
   <category name = "Arduino">

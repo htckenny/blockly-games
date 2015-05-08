@@ -8,7 +8,7 @@
  */
 'use strict';
 
-goog.provide('pacelab.Blocks');
+goog.provide('Pinball.Blocks');
 
 goog.require('Blockly');
 goog.require('BlocklyGames');
@@ -240,7 +240,7 @@ Blockly.JavaScript['set_channel_led'] = function(block) {
   var dropdown_channel = block.getFieldValue('channel');
   var dropdown_status = block.getFieldValue('status');
   // TODO: Assemble JavaScript into code variable.
-  var code = '';
+  var code = '//set '+dropdown_channel+' status = '+dropdown_status+';\n';
   return code;
 };
 
@@ -445,5 +445,50 @@ Blockly.JavaScript['wait'] = function(block) {
   var value_time = Blockly.JavaScript.valueToCode(block, 'time', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
   var code = '...';
+  return code;
+};
+Blockly.Blocks['forever'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setColour(20);
+    this.appendDummyInput()
+        .appendField("forever");
+    this.appendStatementInput("do");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+  }
+};
+Blockly.JavaScript['forever'] = function(block) {
+  var statements_do = Blockly.JavaScript.statementToCode(block, 'do');
+  // TODO: Assemble JavaScript into code variable.
+  var code =  '//forever\n' +
+              'while(1){'  + statements_do +  '}\n';
+  return code;
+};
+Blockly.Blocks['repeat'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setColour(120);
+    this.appendValueInput("times")
+        .setCheck("Number")
+        .appendField("repeat");
+    this.appendDummyInput()
+        .appendField("times");
+    this.appendStatementInput("do")
+        .appendField("do");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+  }
+};
+Blockly.JavaScript['repeat'] = function(block) {
+  var value_times = Blockly.JavaScript.valueToCode(block, 'times', Blockly.JavaScript.ORDER_ATOMIC);
+  var statements_do = Blockly.JavaScript.statementToCode(block, 'do');
+  // TODO: Assemble JavaScript into code variable.
+  var code = '//repeat\n'+
+              'for(int i=0;i<'+value_times+';i++;){\n'+
+              statements_do+'\n}';
   return code;
 };

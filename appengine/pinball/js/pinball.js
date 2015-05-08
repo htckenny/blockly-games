@@ -16,7 +16,7 @@ goog.require('BlocklyInterface');
 goog.require('goog.math');
 
 
-BlocklyGames.NAME = 'pinball';
+BlocklyGames.NAME = 'Pinball';
 
 /**
  * Initialize Blockly and the pinball.  Called on page load.
@@ -44,6 +44,9 @@ Pinball.init = function() {
 
   
 };
-
+function showCode(){
+  var code = Blockly.JavaScript.workspaceToCode();
+  alert(code);
+}
 window.addEventListener('load', Pinball.init);
 

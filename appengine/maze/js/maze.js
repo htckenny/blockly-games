@@ -49,7 +49,7 @@ BlocklyInterface.nextLevel = function() {
 };
 
 Maze.MAX_BLOCKS = [undefined, // Level 0.
-    Infinity, Infinity, 2, 5, 5, 5, 5, 10, 7, 10][BlocklyGames.LEVEL];
+    Infinity, Infinity, 2, 5, 5, 5, 5, 10, 7, 12, 21][BlocklyGames.LEVEL];
 
 // Crash type constants.
 Maze.CRASH_STOP = 1;
@@ -221,6 +221,15 @@ Maze.map = [
   [0, 1, 1, 1, 1, 1, 1, 0],
   [0, 0, 0, 1, 0, 0, 1, 0],
   [0, 2, 1, 1, 1, 0, 1, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0]],
+  // Level 11.
+ [[0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 1, 1, 0, 2, 0, 1, 0],
+  [0, 1, 1, 0, 1, 1, 1, 0],
+  [0, 1, 0, 1, 0, 1, 0, 0],
+  [0, 1, 1, 1, 1, 1, 1, 0],
+  [0, 0, 0, 1, 0, 0, 1, 0],
+  [0, 3, 1, 1, 1, 0, 1, 0],
   [0, 0, 0, 0, 0, 0, 0, 0]]
 ][BlocklyGames.LEVEL];
 
@@ -552,7 +561,7 @@ Maze.init = function() {
     // Make connecting blocks easier for beginners.
     Blockly.SNAP_RADIUS *= 2;
   }
-  if (BlocklyGames.LEVEL == 10) {
+  if (BlocklyGames.LEVEL == 11) {
     if (!BlocklyGames.loadFromLocalStorage(BlocklyGames.NAME,
                                           BlocklyGames.LEVEL)) {
       // Level 10 gets an introductory modal dialog.
@@ -978,6 +987,7 @@ Maze.resetButtonClick = function(e) {
  * @param {!Object} scope Global scope.
  * @param {!Interpreter} interpreter The JS interpreter.
  */
+ 
 Maze.initInterpreter = function(interpreter, scope) {
   // API
   var wrapper;
